@@ -19,5 +19,7 @@ RUN chgrp -R play /opt/play
 ENV PATH "$PATH:/opt/play"
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 WORKDIR /home/play
+ADD . Helloworld
 
 EXPOSE 9000
+CMD play run Helloworld
