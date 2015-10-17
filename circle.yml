@@ -1,0 +1,14 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker info
+    - docker build -t lanets/website:$CIRCLE_BRANCH .
+
+test:
+  post:
+    - docker run -d -p 9000:9000 lanets/website:$CIRCLE_BRANCH; sleep 10
+    - curl --retry 10 --retry-delay 5 -v http://localhost:9000
+
