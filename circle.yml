@@ -16,7 +16,7 @@ test:
 
 deployment:
   dokku:
-    branch: master
+    branch: test2
     commands:
       - pip install fabric
       - fab deploy:branch="$CIRCLE_BRANCH"
