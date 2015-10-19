@@ -3,8 +3,10 @@ from fabric.api import *
 
 
 def create_app(branch):
-     print('do nothing')
-#    run(''.join(('dokku apps:create ',branch,'-app')))
+     try:
+         run(''.join(('dokku apps:create ',branch,'-app')))
+     except Error:
+         print('something went wrong')
 #    run(''.join(('dokku mariadb:create ',branch,'-db')))
 #    run(''.join(('dokku mariadb:link ',branch,'-db ',branch,'-app')))
     
